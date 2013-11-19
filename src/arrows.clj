@@ -17,6 +17,12 @@
 (defprotocol ArrowChoice
   (arrow-select [_ vp-pairs]))
 
+;; feedback arrow protocol
+;; 'val-and-p' is a seq of with an initial value
+;; and an optional feedback proc
+(defprotocol ArrowLoop
+  (arrow-loop [p val-and-p]))
+
 ;; identity arrow protocol
 (defprotocol ArrowIdentity
   (arrow-identity [_]))
@@ -74,9 +80,11 @@
    (all pred (arrow-identity pred))
    (apply cond vp-pairs)))
 
-;; TODO: figure out looping arrows
-#_(defn loop [p initial-value & [fb-p]]
-    (arrow-loop p [initial-value fb-p]))
+(defn loop
+  ([p initial-value]
+     (arrow-loop p [initial-value]))
+  ([p initial-value fp-p]
+     (arrow-loop p [initial-value fb-p])))
 
 ;; defining the default arrow-par behavior
 ;; gets overridden when the arrow-par protocol is defined

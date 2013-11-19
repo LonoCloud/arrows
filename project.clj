@@ -1,4 +1,4 @@
-(defproject com.viasat/arrows "1.1.5"
+(defproject com.viasat/arrows "1.1.6"
   :min-lein-version "2.0.0"
   :dependencies [[org.clojure/clojure "1.5.1"]
                  [net.clojure/monads "1.0.1"]]
