@@ -208,7 +208,7 @@
                           [(boolean ~pred) v#])))
                 (arrows/cond
                  true ~true-expr
-                 '_ ~false-expr))))
+                 (symbol "_") ~false-expr))))
 
 ;; A parser to match a proc application expression
 (def match-application
