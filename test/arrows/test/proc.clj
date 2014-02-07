@@ -137,10 +137,10 @@
 (deftest test-match-if
   (is (= '(arrows/seq (arr (clojure.core/fn [v]
                                             (clojure.core/let [x v]
-                                                              [(= x 10) v])))
+                                              [(clojure.core/boolean (= x 10)) v])))
                       (arrows/cond
                        true true-arrow
-                       false (arrows/seq a1 a2)))
+                       (quote arrows.proc/_) (arrows/seq a1 a2)))
          (-> {:arr 'arr :env '[x] :cmd '(proc-if (= x 10)
                                                  true-arrow
                                                  (arrows/seq a1 a2))}
@@ -184,10 +184,10 @@
              replace-autos)))
   (is (= '(arrows/seq (arr (clojure.core/fn [v]
                                             (clojure.core/let [x v]
-                                                              [(= x 10) v])))
+                                              [(clojure.core/boolean (= x 10)) v])))
                       (arrows/cond
                        true true-arrow
-                       false (arrows/seq a1 a2)))
+                       (quote arrows.proc/_) (arrows/seq a1 a2)))
          (-> {:arr 'arr :env '[x] :cmd '(proc-if (= x 10)
                                                  true-arrow
                                                  (arrows/seq a1 a2))}

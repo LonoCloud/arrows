@@ -205,10 +205,10 @@
     false-expr next-item]
    `(arrows/seq (~arr (fn [v#]
                         (let [~@env v#]
-                          [~pred v#])))
+                          [(boolean ~pred) v#])))
                 (arrows/cond
                  true ~true-expr
-                 false ~false-expr))))
+                 '_ ~false-expr))))
 
 ;; A parser to match a proc application expression
 (def match-application

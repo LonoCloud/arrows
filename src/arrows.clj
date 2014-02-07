@@ -80,7 +80,7 @@
    (all pred (arrow-identity pred))
    (apply cond vp-pairs)))
 
-(defn loop
+#_(defn loop
   ([p initial-value]
      (arrow-loop p [initial-value]))
   ([p initial-value fp-p]
